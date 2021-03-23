@@ -30,6 +30,7 @@ function App() {
           arrayCopy[i + 1] = temp;
           swap = true;
         } else {
+          setArray(arrayCopy);
         }
       }
     } while (swap);
