@@ -4,4 +4,5 @@ export default function createArray(amount){
         const num = Math.floor((Math.random() * 100) + 1);
         array.push(num);
     }
+    return array;
 }

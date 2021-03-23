@@ -1,12 +1,13 @@
 import React from 'react'
-import styles from './line.modules.css';
+import styled from 'styled-components';
 
-export const Line = ({height}) => {
+const Line = ({height}) => {
 
     const StyledLine = styled.div`
       border-color: hotpink;
       border: 4px solid;
-      height: ${height};
+      height: ${height}px;
+      width: 2px;
     `;
 
     return (
@@ -14,3 +15,5 @@ export const Line = ({height}) => {
         </StyledLine>
     )
 }
+
+export default Line;
