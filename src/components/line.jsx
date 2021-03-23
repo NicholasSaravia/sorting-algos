@@ -10,9 +10,11 @@ const Line = ({node}) => {
     `;
 
     return (
-        <StyledLine>
-        </StyledLine>
-    )
+      <div className="line-container">
+        <StyledLine></StyledLine>
+        {node.height}
+      </div>
+    );
 }
 
 export default Line;

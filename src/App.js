@@ -37,7 +37,7 @@ function App() {
   };
 
   const createRandomArray = () => {
-    const randomNum = Math.floor(Math.random() * 100 + 1);
+    const randomNum = Math.floor(Math.random() * 1000 + 1);
     const arr = createArray(randomNum);
     return arr;
   };
@@ -46,7 +46,7 @@ function App() {
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(2px, 1fr));
-    gap: 10px;
+    gap: 35px;
   `;
 
   return (
