@@ -1,12 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const Line = ({height}) => {
+const Line = ({node}) => {
 
     const StyledLine = styled.div`
-      border-color: hotpink;
-      border: 4px solid;
-      height: ${height}px;
+      border: 4px solid ${node.selected ? "hotpink" :  "black"};
+      height: ${node.height}px;
       width: 2px;
     `;
 

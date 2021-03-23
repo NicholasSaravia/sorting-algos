@@ -1,4 +1,5 @@
 .App{
   display: grid;
   grid-template-rows: 20vh 80vh;
+  padding: 20px;
 }

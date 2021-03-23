@@ -12,7 +12,31 @@ function App() {
   useEffect(() => {
     const arr = createRandomArray();
     setArray(arr);
-  }, [])
+  }, []);
+
+  const bubbleSort = () => {
+    console.log("hi");
+      let swap = false;
+      let arrayCopy = [...array];
+      
+      do {
+        console.log("hey there")
+        swap = false;
+        for (let i = 0; i < arrayCopy.length; i++) {
+          console.log(i + 1);
+          if (i + 1 <= arrayCopy.length - 1 && arrayCopy[i].height > arrayCopy[i + 1].height) {
+            const temp = arrayCopy[i];
+            arrayCopy[i].selected = true;
+            arrayCopy[i] = arrayCopy[i + 1];
+            arrayCopy[i + 1] = temp;
+            swap = true;
+          }else{
+          }
+        }
+      } while (swap);
+      console.log(arrayCopy);    
+  }
+
 
   const createRandomArray = () => {
     const randomNum = Math.floor(Math.random() * 100 + 1);
@@ -37,10 +61,17 @@ function App() {
         >
           Random Array
         </Button>
+        <Button
+          onClick={() => bubbleSort()}
+          variant="contained"
+          color="secondary"
+        >
+          Bubble Sort
+        </Button>
       </div>
       <StyledDiv>
-        {array.map((a) => (
-          <Line height={a}></Line>
+        {array.map((a, i) => (
+          <Line key={i} node={a}></Line>
         ))}
       </StyledDiv>
     </div>
