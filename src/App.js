@@ -16,7 +16,7 @@ function App() {
 
  
   const createRandomArray = () => {
-    const randomNum = Math.floor(Math.random() * 1000 + 1);
+    const randomNum = Math.floor(Math.random() * 100 + 1);
     const arr = createArray(randomNum);
     return arr;
   };
