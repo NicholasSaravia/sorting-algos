@@ -7,7 +7,7 @@ const arraySlice = createSlice({
         currentIndex: 0
     },
     reducers:{
-        updateArray: (state, action) => {
+        setArray: (state, action) => {
             state.value = action.payload;
         },
         setCurrentIndex: (state, action) => {
@@ -16,5 +16,5 @@ const arraySlice = createSlice({
     }
 });
 
-export const {updateArray, setCurrentIndex} = arraySlice.actions;
+export const {setArray, setCurrentIndex} = arraySlice.actions;
 export default arraySlice.reducer;

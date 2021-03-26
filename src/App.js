@@ -2,16 +2,21 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Button } from "@material-ui/core";
 import createArray from "./methods";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import Line from "./components/line";
 import { Bubble } from "./components/bubble/bubble";
+import {setArray} from './store/arraySlice';
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
-  const [array, setArray] = useState([]);
+
+  const array = useSelector(state => state.array.value);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const arr = createRandomArray();
-    setArray(arr);
+    dispatch(setArray(arr));
   }, []);
 
  
