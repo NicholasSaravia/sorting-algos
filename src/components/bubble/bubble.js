@@ -1,45 +1,46 @@
 import { Button } from "@material-ui/core";
 import React from "react";
-import { useDispatch } from "react-redux";
-import { setArray, setCurrentIndex } from "../../store/arraySlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setCurrentIndex,
+  setComparedIndex,
+  updateArrayPositions
+} from "../../store/arraySlice";
 
-export const Bubble = ({ array }) => {
+export const Bubble = () => {
+  const array = useSelector(state => state.array.value);
   const dispatch = useDispatch();
 
   const bubbleSort = async () => {
     let swap = false;
-    let arrayCopy = [...array];
     do {
       swap = false;
-      for (let i = 0; i < arrayCopy.length; i++) {
+      for (let i = 0; i < array.length; i++) {     
+        dispatch(setCurrentIndex(i));
+        dispatch(setComparedIndex(i + 1));
 
         if (
-          i + 1 <= arrayCopy.length - 1 &&
-          arrayCopy[i].height > arrayCopy[i + 1].height
+          // check out of range
+          i + 1 <= array.length - 1 &&
+          // check if left is greator than right
+          array[i].height > array[i + 1].height
         ) {
-          arrayCopy = [
-            ...arrayCopy.slice(0, i),
-            arrayCopy[i + 1],
-            arrayCopy[i],
-            ...array.slice(i + 2),
-          ];
+
+          // switch left and right positions
+          dispatch(updateArrayPositions({ index1: i, index2: i + 1}));
           swap = true;
         }
 
-        const promise = new Promise((resolve, reject) => {
-          setTimeout(() => {
-            dispatch(setCurrentIndex(i));
-            updateArrayHandler(arrayCopy, resolve);
-          }, 50);
+        let promise = new Promise((resolve, reject) => {
+            setTimeout(()=> {
+              resolve();
+            },1000)
         });
         await Promise.all([promise]);
+
+
       }
     } while (swap);
-  };
-
-  const updateArrayHandler = async (arrayCopy, resolve) => {
-    dispatch(setArray(arrayCopy));
-    resolve();
   };
 
   return (
