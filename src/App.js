@@ -27,6 +27,7 @@ function App() {
     return arr;
   };
 
+
   const StyledDiv = styled.div`
     padding: 20px;
     display: grid;
@@ -38,7 +39,7 @@ function App() {
     <div className="App">
       <div>
         <Button
-          onClick={() => setArray(createRandomArray)}
+          onClick={() => dispatch(setArray(createRandomArray()))}
           variant="contained"
           color="primary"
         >

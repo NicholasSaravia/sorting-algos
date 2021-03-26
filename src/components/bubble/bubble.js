@@ -30,7 +30,7 @@ export const Bubble = ({ array }) => {
           setTimeout(() => {
             dispatch(setCurrentIndex(i));
             updateArrayHandler(arrayCopy, resolve);
-          }, 100);
+          }, 50);
         });
         await Promise.all([promise]);
       }
