@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const Line = ({node}) => {
+const Line = ({node, selected}) => {
 
     const StyledLine = styled.div`
-      border: 4px solid ${node.selected ? "hotpink" :  "black"};
+      border: 4px solid ${selected ? "hotpink" :  "black"};
       height: ${node.height}px;
       width: 2px;
     `;

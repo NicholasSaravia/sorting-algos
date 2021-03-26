@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 function App() {
 
   const array = useSelector(state => state.array.value);
+  const currentIndex = useSelector(state => state.array.currentIndex);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,11 +44,11 @@ function App() {
         >
           Random Array
         </Button>
-        <Bubble array={array} updateArray={setArray}></Bubble>
+        <Bubble array={array}></Bubble>
       </div>
       <StyledDiv>
         {array.map((a, i) => (
-          <Line key={i} node={a}></Line>
+          <Line key={i} node={a} selected={i === currentIndex}></Line>
         ))}
       </StyledDiv>
     </div>
