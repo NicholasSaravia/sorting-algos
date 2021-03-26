@@ -3,8 +3,9 @@ import "./App.css";
 import { Button } from "@material-ui/core";
 import createArray from "./methods";
 import { useState, useEffect } from "react";
-import Line from "./components/line";
 import styled from "styled-components";
+import Line from "./components/line";
+import { Bubble } from "./components/bubble/bubble";
 
 function App() {
   const [array, setArray] = useState([]);
@@ -13,29 +14,7 @@ function App() {
     setArray(arr);
   }, []);
 
-  const bubbleSort = () => {
-    let swap = false;
-    let arrayCopy = [...array];
-
-    do {
-      swap = false;
-      for (let i = 0; i < arrayCopy.length; i++) {
-        if (
-          i + 1 <= arrayCopy.length - 1 &&
-          arrayCopy[i].height > arrayCopy[i + 1].height
-        ) {
-          const temp = arrayCopy[i];
-          arrayCopy[i].selected = true;
-          arrayCopy[i] = arrayCopy[i + 1];
-          arrayCopy[i + 1] = temp;
-          swap = true;
-        } else {
-          setArray(arrayCopy);
-        }
-      }
-    } while (swap);
-  };
-
+ 
   const createRandomArray = () => {
     const randomNum = Math.floor(Math.random() * 1000 + 1);
     const arr = createArray(randomNum);
@@ -59,13 +38,7 @@ function App() {
         >
           Random Array
         </Button>
-        <Button
-          onClick={() => bubbleSort()}
-          variant="contained"
-          color="secondary"
-        >
-          Bubble Sort
-        </Button>
+        <Bubble array={array} updateArray={setArray}></Bubble>
       </div>
       <StyledDiv>
         {array.map((a, i) => (
