@@ -22,12 +22,7 @@ const arraySlice = createSlice({
       const temp = state.value[index1];
       state.value[index1] = state.value[index2];
       state.value[index2] = temp;
-      // state.value = [
-      //   ...state.value.slice(0, index1),
-      //   state.value[index2],
-      //   state.value[index1],
-      //   ...state.value.slice(index2 + 1)
-      // ]
+      
     },
   },
 });

@@ -23,7 +23,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const arr = createRandomArray(10);
+    const arr = createRandomArray(100);
     dispatch(setArray(arr));
   }, []);
 
@@ -38,13 +38,13 @@ function App() {
     <div className="App">
       <div>
         <Button
-          onClick={() => dispatch(setArray(createRandomArray(10)))}
+          onClick={() => dispatch(setArray(createRandomArray(100)))}
           variant="contained"
           color="primary"
         >
           Random Array
         </Button>
-        <Bubble></Bubble>
+        <Bubble array={value}></Bubble>
       </div>
       <StyledDiv>
         {value.map((a, i) => (
