@@ -10,6 +10,8 @@ const arraySlice = createSlice({
   reducers: {
     setArray: (state, action) => {
       state.value = action.payload;
+      state.currentIndex = 0;
+      state.comparedIndex = 1;
     },
     setCurrentIndex: (state, action) => {
       state.currentIndex = action.payload;
