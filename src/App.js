@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <div className="App__buttons">
         <Button
           onClick={() => dispatch(setArray(createRandomArray(100)))}
           variant="contained"
@@ -44,7 +44,9 @@ function App() {
         >
           Random Array
         </Button>
+        <div>
         <Bubble array={value}></Bubble>
+        </div>
       </div>
       <StyledDiv>
         {value.map((a, i) => (

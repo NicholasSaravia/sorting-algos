@@ -8,3 +8,8 @@
   flex-direction: column;
   align-items: center;
 }
+.App__buttons{
+  display: flex;
+    justify-content: space-between;
+    height: max-content;
+}
