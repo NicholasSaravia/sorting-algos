@@ -5,6 +5,7 @@ import {
   setCurrentIndex,
   setComparedIndex,
   updateArrayPositions,
+  setItterations,
 } from "../../store/arraySlice";
 
 export const Bubble = () => {
@@ -13,10 +14,13 @@ export const Bubble = () => {
 
   const bubbleSort = async () => {
     const arrayCopy = [...array];
+    let itterations = 0;
     let swap = false;
 
     do {
       swap = false;
+      dispatch(setItterations(itterations++));
+
       for (let i = 0; i < arrayCopy.length; i++) {
         let promise1 = new Promise((resolve, reject) => {
           setTimeout(() => {

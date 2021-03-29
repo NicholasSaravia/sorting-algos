@@ -11,14 +11,14 @@ import { useDispatch, useSelector } from "react-redux";
 const StyledDiv = styled.div`
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(2px, 1fr));
-  gap: 35px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr;
 `;
 
 function App() {
 
   const array = useSelector(state => state.array);
-  const { comparedIndex, currentIndex, value } = array;
+  const { comparedIndex, currentIndex, value, itterations } = array;
 
   const dispatch = useDispatch();
 
@@ -45,13 +45,23 @@ function App() {
           Random Array
         </Button>
         <div>
-        <Bubble array={value}></Bubble>
+          <Bubble array={value}></Bubble>
         </div>
       </div>
       <StyledDiv>
-        {value.map((a, i) => (
-          <Line key={i} node={a} selected={i === currentIndex} compared={i === comparedIndex}></Line>
-        ))}
+        <div>
+          <h3>Itterations: {itterations}</h3>
+        </div>
+        <div className="App__array-container">
+          {value.map((a, i) => (
+            <Line
+              key={i}
+              node={a}
+              selected={i === currentIndex}
+              compared={i === comparedIndex}
+            ></Line>
+          ))}
+        </div>
       </StyledDiv>
     </div>
   );

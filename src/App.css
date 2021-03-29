@@ -13,3 +13,8 @@
     justify-content: space-between;
     height: max-content;
 }
+.App__array-container{
+  display: grid;
+  gap: 35px;
+  grid-template-columns: repeat(auto-fill, minmax(2px, 1fr));
+}

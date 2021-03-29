@@ -6,12 +6,14 @@ const arraySlice = createSlice({
     value: [],
     currentIndex: 0,
     comparedIndex: 1,
+    itterations: 0
   },
   reducers: {
     setArray: (state, action) => {
       state.value = action.payload;
       state.currentIndex = 0;
       state.comparedIndex = 1;
+      state.itterations = 0;
     },
     setCurrentIndex: (state, action) => {
       state.currentIndex = action.payload;
@@ -24,8 +26,10 @@ const arraySlice = createSlice({
       const temp = state.value[index1];
       state.value[index1] = state.value[index2];
       state.value[index2] = temp;
-      
     },
+    setItterations: (state, action) => {
+      state.itterations = action.payload;
+    }
   },
 });
 
@@ -33,7 +37,8 @@ export const {
   setArray,
   setCurrentIndex,
   updateArrayPositions,
-  setComparedIndex
+  setComparedIndex,
+  setItterations
 } = arraySlice.actions;
 
 
