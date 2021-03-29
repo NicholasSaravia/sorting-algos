@@ -7,6 +7,7 @@ import Line from "./components/line";
 import { Bubble } from "./components/bubble/bubble";
 import {setArray} from './store/arraySlice';
 import { useDispatch, useSelector } from "react-redux";
+import { Selection } from "./components/bubble/selection";
 
 const StyledDiv = styled.div`
   padding: 20px;
@@ -44,8 +45,9 @@ function App() {
         >
           Random Array
         </Button>
-        <div>
+        <div className="">
           <Bubble array={value}></Bubble>
+          <Selection></Selection>
         </div>
       </div>
       <StyledDiv>
