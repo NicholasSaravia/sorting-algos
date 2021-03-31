@@ -9,9 +9,10 @@
   align-items: center;
 }
 .App__buttons{
-  display: flex;
-    justify-content: space-between;
-    height: max-content;
+  display: grid;
+  gap: 35px;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 200px));
+  grid-template-rows: min-content;
 }
 .App__array-container{
   display: grid;

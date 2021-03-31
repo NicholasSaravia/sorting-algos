@@ -45,10 +45,8 @@ function App() {
         >
           Random Array
         </Button>
-        <div className="">
-          <Bubble array={value}></Bubble>
-          <Selection></Selection>
-        </div>
+        <Bubble array={value}></Bubble>
+        <Selection></Selection>
       </div>
       <StyledDiv>
         <div>
