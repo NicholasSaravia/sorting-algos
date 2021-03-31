@@ -13,6 +13,7 @@ export const Selection = () => {
   const dispatch = useDispatch();
 
   const swap = (i, j, arrayCopy) => {
+    console.log({ arrayCopy, i, j });
     const temp = arrayCopy[j];
     arrayCopy[j] = arrayCopy[i];
     arrayCopy[i] = temp;
@@ -20,30 +21,42 @@ export const Selection = () => {
 
   const selectionSort = async () => {
     let arrayCopy = [...array];
+    let smallestIndex = 0;
+    let comparedIndex = 1;
+    // loop through array once.
     for (let i = 0; i < arrayCopy.length; i++) {
-      let smallestNumIndex = i;
+      // itterate through array swapping indexes if right side is bigger than left
       for (let j = 1; j < arrayCopy.length; j++) {
-        
-        let promisOne = new Promise((resolve, reject) => {
+        // set compared index - orange
+        let promiseOne = new Promise((resolve, reject) => {
           setTimeout(() => {
-            dispatch(setComparedIndex(j));
+            comparedIndex = j;
+            dispatch(setComparedIndex(comparedIndex));
             resolve();
           }, 100);
         });
+        await Promise.all([promiseOne]);
 
-        if (arrayCopy[i].height > arrayCopy[j].height) {
+        // if right is smaller than left, then swap places
+        if (arrayCopy[smallestIndex].height > arrayCopy[comparedIndex].height) {
+          // swap places and set current index (pink) to current index
           let promise = new Promise((resolve, reject) => {
             setTimeout(() => {
-              dispatch(updateArrayPositions({ index1: i, index2: j }));
-              dispatch(setCurrentIndex(j));
+              // update local array
+              swap(smallestIndex, comparedIndex, arrayCopy);             
+              dispatch(updateArrayPositions({ index1: smallestIndex, index2: comparedIndex }));
+
+              smallestIndex = j;
+              comparedIndex = j + 1;
+              // update state array
+              dispatch(setCurrentIndex(smallestIndex));
+              dispatch(setComparedIndex(comparedIndex));
+
               resolve();
             }, 100);
           });
-          await Promise.all([promisOne, promise]);
-
-          swap(i, j, arrayCopy);
-          smallestNumIndex = j;
-        }
+          await Promise.all([promise]);
+        } 
       }
     }
   };
